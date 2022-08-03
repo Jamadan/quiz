@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Question } from "../../types/Question";
 import { StyledOuterWrapper } from "../Styled";
+import he from "he";
 
 export interface ResultsProps {
   questions: Question[];
@@ -17,7 +18,6 @@ const getScore = (questions: Question[]): string => {
 
 const StyledAnswer = styled("div")`
   display: flex;
-  flex-direction: row;
   max-height: 100px;
   width: 100%;
 
@@ -25,10 +25,14 @@ const StyledAnswer = styled("div")`
     display: flex;
     width: 20%;
     font-size: 3em;
+    align-items: center;
+    justify-content: center;
   }
   div {
     display: flex;
     width: 80%;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -46,7 +50,7 @@ const Results = ({ questions, startAgain }: ResultsProps) => {
             ) : (
               <span>-</span>
             )}
-            <div>{q.question.substring(0, 100)}</div>
+            <div>{he.decode(q.question.substring(0, 100))}</div>
           </StyledAnswer>
         );
       })}
