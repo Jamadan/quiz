@@ -1,0 +1,1 @@
+export { StyledOuterWrapper } from "./wrapper";

@@ -10,10 +10,7 @@ const Home: NextPage = () => {
   const { questions, clearQuestions, setQuestionAnswer, getQuestions } =
     questionList;
 
-  console.log(typeof questions);
-  console.log(questions);
-
-  if (questions.some((q) => !!q.selectedAnswer)) {
+  if (questions.length && questions.every((q) => !!q.selectedAnswer)) {
     return (
       <Results questions={questions} startAgain={() => clearQuestions()} />
     );
@@ -26,6 +23,7 @@ const Home: NextPage = () => {
       <Question
         question={questions[nextQuestionIndex]}
         answer={(value: string) => setQuestionAnswer(nextQuestionIndex, value)}
+        index={`${nextQuestionIndex}/${questions.length}`}
       />
     );
   }

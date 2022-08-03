@@ -5,22 +5,16 @@ import { Questions } from "../../types/Store";
 const localStorageKey = "jamadan-g2i-quiz";
 
 export const useQuestions = (): Questions => {
-  const [questions, setQuestions] = useState<Question[]>(
-    typeof window !== "undefined"
-      ? JSON.parse(window?.sessionStorage.getItem(localStorageKey) || "[]")
-      : []
-  );
-
-  useEffect(() => {
-    sessionStorage.setItem(localStorageKey, JSON.stringify(questions));
-  }, [questions]);
+  const [questions, setQuestions] = useState<Question[]>([]);
 
   const getQuestions = async () => {
     const response = await fetch(
       "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean"
     );
 
-    console.log(response);
+    const json = await response.json();
+
+    setQuestions(json.results);
   };
 
   const setQuestionAnswer = (index: number, value: string) => {
