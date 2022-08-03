@@ -6,7 +6,9 @@ const localStorageKey = "jamadan-g2i-quiz";
 
 export const useQuestions = (): Questions => {
   const [questions, setQuestions] = useState<Question[]>(
-    JSON.parse(window?.sessionStorage.getItem(localStorageKey) || "[]")
+    typeof window !== "undefined"
+      ? JSON.parse(window?.sessionStorage.getItem(localStorageKey) || "[]")
+      : []
   );
 
   useEffect(() => {
