@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Question } from '../../types/Question';
-import { StyledOuterWrapper } from '../Styled';
+import { StyledButton, StyledOuterWrapper } from '../Styled';
 import he from 'he';
 
 export interface ResultsProps {
@@ -11,9 +11,9 @@ export interface ResultsProps {
 
 const getScore = (questions: Question[]): string => {
   const correct = questions.filter(
-    (q) => q.selectedAnswer === q.correct_answer
+    (q) => q.selectedAnswer === q.correct_answer,
   ).length;
-  return `You scored ${correct} / ${questions.length}`;
+  return `${correct} / ${questions.length}`;
 };
 
 const StyledAnswer = styled('div')`
@@ -36,6 +36,10 @@ const StyledAnswer = styled('div')`
   }
 `;
 
+const StyledSpacerButton = styled(StyledButton)`
+  margin-top: 20px;
+`;
+
 const Results = ({ questions, startAgain }: ResultsProps) => {
   const score = getScore(questions);
 
@@ -54,7 +58,7 @@ const Results = ({ questions, startAgain }: ResultsProps) => {
           </StyledAnswer>
         );
       })}
-      <button onClick={startAgain}>START AGAIN</button>
+      <StyledSpacerButton onClick={startAgain}>START AGAIN</StyledSpacerButton>
     </StyledOuterWrapper>
   );
 };

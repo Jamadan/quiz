@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Question } from '../../types/Question';
+import { Question as QuestionType } from '../../types/Question';
 import { StyledButton, StyledOuterWrapper } from '../Styled';
+import he from 'he';
 
 export interface QuestionProps {
-  question: Question;
+  question: QuestionType;
   answer: (value: string) => void;
   index: string;
 }
@@ -30,8 +31,8 @@ const StyledButtonWrapper = styled('div')`
 const Question = ({ question, answer, index }: QuestionProps) => {
   return (
     <StyledOuterWrapper>
-      <h2>{question.category}</h2>
-      <StyledQuestion>{question.question}</StyledQuestion>
+      <h2>{he.decode(question.category)}</h2>
+      <StyledQuestion>{he.decode(question.question)}</StyledQuestion>
 
       <StyledButtonWrapper>
         <StyledButton onClick={() => answer('True')}>True</StyledButton>
