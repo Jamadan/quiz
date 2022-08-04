@@ -1,5 +1,5 @@
-import type { AppProps } from "next/app";
-import { StoreProvider } from "../hooks/useStore";
+import type { AppProps } from 'next/app';
+import { StoreProvider } from '../hooks/useStore';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

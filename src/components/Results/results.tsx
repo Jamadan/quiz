@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Question } from "../../types/Question";
-import { StyledOuterWrapper } from "../Styled";
-import he from "he";
+import React from 'react';
+import styled from 'styled-components';
+import { Question } from '../../types/Question';
+import { StyledOuterWrapper } from '../Styled';
+import he from 'he';
 
 export interface ResultsProps {
   questions: Question[];
@@ -16,7 +16,7 @@ const getScore = (questions: Question[]): string => {
   return `You scored ${correct} / ${questions.length}`;
 };
 
-const StyledAnswer = styled("div")`
+const StyledAnswer = styled('div')`
   display: flex;
   max-height: 100px;
   width: 100%;

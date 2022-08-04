@@ -1,0 +1,32 @@
+{
+    "extends": "next/core-web-vitals",
+    "plugins": ["better-styled-components"],
+    "rules": {
+      "indent": [
+          "error",
+          2
+      ],
+      "linebreak-style": [
+          "error",
+          "unix"
+      ],
+      "quotes": [
+          "error",
+          "single"
+      ],
+      "semi": [
+          "error",
+          "always"
+      ],
+      "prefer-const": [
+          "error",
+          {
+              "destructuring": "any",
+              "ignoreReadBeforeAssign": false
+          }
+      ],
+      "eol-last": ["error", "always"],
+      "no-unused-vars": ["error", { "args": "none" }]
+    }
+  }
+  

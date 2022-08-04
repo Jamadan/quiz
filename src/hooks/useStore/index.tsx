@@ -1,6 +1,6 @@
-import React, { createContext, useContext } from "react";
-import { Store } from "../../types/Store";
-import { useQuestions } from "./useQuestions";
+import React, { createContext, useContext } from 'react';
+import { Store } from '../../types/Store';
+import { useQuestions } from './useQuestions';
 
 const StoreContext = createContext<Store>(undefined!);
 

@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import Question from "../components/Question";
-import Results from "../components/Results";
-import Start from "../components/Start";
-import { useStore } from "../hooks/useStore";
+import type { NextPage } from 'next';
+import Question from '../components/Question';
+import Results from '../components/Results';
+import Start from '../components/Start';
+import { useStore } from '../hooks/useStore';
 
 const Home: NextPage = () => {
   const { questionList } = useStore();
