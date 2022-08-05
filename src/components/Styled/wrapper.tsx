@@ -8,8 +8,3 @@ export const StyledOuterWrapper = styled('div')`
   padding: 50px;
   text-align: center;
 `;
-
-export const StyledButton = styled('div')`
-  width: 30%;
-  border: 1px dotted black;
-`;

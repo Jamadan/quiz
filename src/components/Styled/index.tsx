@@ -1,1 +1,2 @@
-export { StyledOuterWrapper, StyledButton } from './wrapper';
+export { StyledOuterWrapper } from './Wrapper';
+export { StyledButton } from './Button';
