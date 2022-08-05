@@ -14,7 +14,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
         questionList,
       }}
     >
-      {children}
+      {children};
     </StoreContext.Provider>
   );
 };
