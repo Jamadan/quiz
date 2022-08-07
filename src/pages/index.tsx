@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   }
   if (questions.length) {
     const nextQuestionIndex = questions.findIndex(
-      (q) => q.selectedAnswer === undefined
+      (q) => q.selectedAnswer === undefined,
     );
     return (
       <Question

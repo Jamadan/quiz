@@ -7,4 +7,9 @@ export const StyledOuterWrapper = styled('div')`
   justify-content: space-between;
   padding: 50px;
   text-align: center;
+  max-width: 800px;
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: lightgray;
 `;

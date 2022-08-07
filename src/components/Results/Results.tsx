@@ -16,21 +16,34 @@ const getScore = (questions: Question[]): string => {
   return `${correct} / ${questions.length}`;
 };
 
-const StyledAnswer = styled('div')`
+interface AnswerProps {
+  isCorrect?: boolean;
+}
+
+const StyledAnswer = styled('div')<AnswerProps>`
   display: flex;
   max-height: 100px;
   width: 100%;
+  ${(props) =>
+    props.isCorrect
+      ? 'background: rgba(0, 255, 0, 0.7);'
+      : 'background: rgba(255, 0, 0, 0.7);'}
+  padding: 5px;
+}
+
+&:active {
+  background-color: ;
 
   span {
     display: flex;
-    width: 20%;
-    font-size: 3em;
+    width: 30%;
     align-items: center;
     justify-content: center;
+    font-size: 0.8em;
   }
   div {
     display: flex;
-    width: 80%;
+    width: 70%;
     align-items: center;
     justify-content: center;
   }
@@ -48,12 +61,15 @@ const Results = ({ questions, startAgain }: ResultsProps) => {
       <h1>You scored {score}</h1>
       {questions.map((q, idx) => {
         return (
-          <StyledAnswer key={idx}>
-            {q.selectedAnswer === q.correct_answer ? (
-              <span>+</span>
-            ) : (
-              <span>-</span>
-            )}
+          <StyledAnswer
+            isCorrect={q.selectedAnswer === q.correct_answer}
+            key={idx}
+          >
+            <span>
+              {q.correct_answer}
+              <br />
+              (You: {q.selectedAnswer})
+            </span>
             <div>{he.decode(q.question.substring(0, 100))}</div>
           </StyledAnswer>
         );
