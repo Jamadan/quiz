@@ -4,13 +4,15 @@ import { Questions } from '../../types/Store';
 
 // const localStorageKey = 'jamadan-g2i-quiz';
 
-export const useQuestions = (): Questions => {
+export const useQuestions = ({
+  questionsUrl,
+}: {
+  questionsUrl: string;
+}): Questions => {
   const [questions, setQuestions] = useState<Question[]>([]);
 
   const getQuestions = async () => {
-    const response = await fetch(
-      'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-    );
+    const response = await fetch(questionsUrl);
 
     const json = await response.json();
 

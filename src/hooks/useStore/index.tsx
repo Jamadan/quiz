@@ -7,7 +7,10 @@ const StoreContext = createContext<Store>(undefined!);
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const questionList = useQuestions();
+  const questionList = useQuestions({
+    questionsUrl:
+      'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+  });
   return (
     <StoreContext.Provider
       value={{
