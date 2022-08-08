@@ -35,8 +35,6 @@ beforeEach(() => {
 test('loads and displays question', async () => {
   expect(screen.getByText('You scored 5 / 10')).toBeInTheDocument();
   expect(await screen.findAllByText('Question 1')).toHaveLength(10);
-  expect(await screen.findAllByText('+')).toHaveLength(5);
-  expect(await screen.findAllByText('-')).toHaveLength(5);
   expect(screen.getByText('START AGAIN')).toBeInTheDocument();
 });
 

@@ -30,7 +30,7 @@ global.fetch = jest.fn(() => {
 });
 
 const TestComponent = ({ url }: { url: string }) => {
-  const { getQuestions, clearQuestions, questions, setQuestionAnswer } =
+  const { getQuestions, clearQuestions, questions, setQuestionAnswer, error } =
     useQuestions({ questionsUrl: url });
 
   return (
@@ -39,6 +39,7 @@ const TestComponent = ({ url }: { url: string }) => {
       <span>
         true {questions.filter((q) => q.selectedAnswer === 'True').length}
       </span>
+      <span>error {error !== undefined ? 'true' : 'false'}</span>
       <span onClick={() => getQuestions()}>get questions</span>
       <span onClick={() => clearQuestions()}>clear questions</span>
       <span
@@ -89,4 +90,14 @@ test('sets data', async () => {
   fireEvent.click(screen.getByText('set question to true'));
 
   await waitFor(() => screen.getByText('true 1'));
+});
+
+test('handles error', async () => {
+  global.fetch = jest.fn(() => Promise.reject({ error: 'error' }));
+
+  render(<TestComponent url="/testendpoint" />);
+
+  fireEvent.click(screen.getByText('get questions'));
+
+  await waitFor(() => screen.getByText('error true'));
 });
