@@ -29,20 +29,17 @@ const StyledAnswer = styled('div')<AnswerProps>`
       ? 'background: rgba(0, 255, 0, 0.7);'
       : 'background: rgba(255, 0, 0, 0.7);'}
   padding: 5px;
-}
 
-&:active {
-  background-color: ;
-
-  span {
+  > span {
     display: flex;
     width: 30%;
     align-items: center;
     justify-content: center;
     font-size: 0.8em;
   }
-  div {
+  > div {
     display: flex;
+    flex-direction: row;
     width: 70%;
     align-items: center;
     justify-content: center;
