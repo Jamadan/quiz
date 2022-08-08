@@ -7,7 +7,7 @@ import { useStore } from '../hooks/useStore';
 const Home: NextPage = () => {
   const { questionList } = useStore();
 
-  const { questions, clearQuestions, setQuestionAnswer, getQuestions } =
+  const { questions, clearQuestions, setQuestionAnswer, getQuestions, error } =
     questionList;
 
   if (questions.length && questions.every((q) => !!q.selectedAnswer)) {
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
     );
   }
 
-  return <Start begin={() => getQuestions()} />;
+  return <Start begin={() => getQuestions()} error={error} />;
 };
 
 export default Home;

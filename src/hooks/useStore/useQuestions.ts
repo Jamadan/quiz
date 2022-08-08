@@ -10,13 +10,18 @@ export const useQuestions = ({
   questionsUrl: string;
 }): Questions => {
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [error, setError] = useState<unknown>();
 
   const getQuestions = async () => {
-    const response = await fetch(questionsUrl);
+    try {
+      const response = await fetch(questionsUrl);
 
-    const json = await response.json();
+      const json = await response.json();
 
-    setQuestions(json.results);
+      setQuestions(json.results);
+    } catch (e) {
+      setError(e);
+    }
   };
 
   const setQuestionAnswer = (index: number, value: string) => {
@@ -31,6 +36,7 @@ export const useQuestions = ({
   };
 
   return {
+    error,
     questions,
     getQuestions,
     setQuestionAnswer,
